@@ -5,7 +5,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,9 +16,16 @@ import javax.xml.parsers.ParserConfigurationException;
 public class DAO {
     private static final String urlmed = "http://gaemedecins.appspot.com/Controleur/medParDep/listeMed/";
     private static final String urldep = "http://denis.brodard.free.fr/dep.php";
-    private static String[] LesNoms;
-    public static ArrayList<String> getLesNoms(String numdep){
-        ArrayList<String> LesNoms = new ArrayList<String>();
+    private static String[] LesInfos;
+
+    /**
+     *
+     * @param numdep
+     * @return LesInfos
+     */
+
+    public static ArrayList<Medecin> getLesInfos(String numdep){
+        ArrayList<Medecin> LesInfos = new ArrayList<Medecin>();
         try{
             System.out.println("passe1");
 
@@ -37,24 +43,44 @@ public class DAO {
             Element racine = doc.getDocumentElement();
             NodeList listeMed = racine.getElementsByTagName("Medecin");
             // récup des médecins
-            for (int i = 0; i < listeMed.getLength(); i++) {
+            System.out.println("listemed: "+ listeMed.getLength());
+            for (int i = 0; i < 5; i++) {
                 Node medecin = listeMed.item(i);
                 NodeList lesProprietes = medecin.getChildNodes();
+                System.out.println("propp: "+ lesProprietes.toString());
                 // recherche du nom
-                for (int j = 0; j < lesProprietes.getLength(); j++) {
-                    if (lesProprietes.item(j).getNodeName().equals("nom")) {
-                        LesNoms.add(lesProprietes.item(j).getTextContent().trim());
-                        System.out.println(LesNoms);
+                Medecin unmed = new Medecin();
+                System.out.println("propro: "+ lesProprietes.getLength());
+                for (Node n : medecin.getChildNodes()) {
+                    switch (lesProprietes.item(j).getNodeName()){
+                        case "nom":unmed.setmNom(lesProprietes.item(j).getTextContent().trim());
+                        break;
+                        case "prenom":unmed.setmPrenom(lesProprietes.item(j).getTextContent().trim());
+                        break;
+                        case "adresse":unmed.setmAdresse(lesProprietes.item(j).getTextContent().trim());
+                        break;
+                        case "specialite":unmed.setmSpecialite(lesProprietes.item(j).getTextContent().trim());
+                        break;
+                        case "tel":unmed.setmTel(lesProprietes.item(j).getTextContent().trim());
                         break;
                     }
+                    LesInfos.add(unmed);
+
                 }
             }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        return LesNoms;
+        return LesInfos;
     }
+
+
+
+    /**
+     *
+     * @return LesDeps
+     */
     public static ArrayList<String> getLesDeps(){
         ArrayList<String> LesDeps = new ArrayList<String>();
         try{

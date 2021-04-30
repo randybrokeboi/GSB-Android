@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#D56767">
+
+    <TextView
+        android:id="@+id/nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:textSize="@dimen/attributMed"
+        android:textColor="@color/Black"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:textSize="@dimen/attributMed"
+        android:textColor="@color/Black"
+        android:layout_below="@+id/nom"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/adresse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:textSize="@dimen/attributMed"
+        android:textColor="@color/Black"
+        android:layout_below="@id/prenom"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/spe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:textSize="@dimen/attributMed"
+        android:textColor="@color/Black"
+        android:layout_below="@id/adresse"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:textSize="@dimen/attributMed"
+        android:textColor="@color/Black"
+        android:layout_below="@+id/spe"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

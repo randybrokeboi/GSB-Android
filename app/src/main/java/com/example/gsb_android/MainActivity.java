@@ -17,8 +17,13 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class MainActivity extends AppCompatActivity {
+
     private List<String> lesDeps;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //on va chercher la vue
@@ -27,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     *
+     */
     private class LisDeps extends AsyncTask {
         @Override
         protected Object doInBackground(Object[] params) {
@@ -35,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
+        /**
+         *
+         * @param o
+         */
         protected void onPostExecute(Object o) {
             ArrayAdapter<String> adapter = null;
             adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,lesDeps);
