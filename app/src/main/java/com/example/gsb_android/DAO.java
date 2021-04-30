@@ -51,7 +51,7 @@ public class DAO {
                 // recherche du nom
                 Medecin unmed = new Medecin();
                 System.out.println("propro: "+ lesProprietes.getLength());
-                for (Node n : medecin.getChildNodes()) {
+                for (int j = 0; j < lesProprietes.getLength(); j++) {
                     switch (lesProprietes.item(j).getNodeName()){
                         case "nom":unmed.setmNom(lesProprietes.item(j).getTextContent().trim());
                         break;
@@ -64,9 +64,8 @@ public class DAO {
                         case "tel":unmed.setmTel(lesProprietes.item(j).getTextContent().trim());
                         break;
                     }
-                    LesInfos.add(unmed);
-
                 }
+                LesInfos.add(unmed);
             }
         }catch (Exception e){
             e.printStackTrace();
